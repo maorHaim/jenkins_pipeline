@@ -9,6 +9,7 @@ pipeline {
         stage('Goodbye'){
             steps {
                 echo 'Goodbye'
+		echo 'Another commit'
             }
         }
 
@@ -18,7 +19,7 @@ pipeline {
                 mail bcc: '', body: 'this time everything is good/ ', cc: '', from: '', replyTo: '', subject: ' successful build', to: 'maor.haim@gmail.com'
             }
             failure{
-                step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'maor.haim@gmail.com', sendToIndividuals: false])
+                mail bcc: '', body: 'this time everything is bad/ ', cc: '', from: '', replyTo: '', subject: 'Failed build', to: 'maor.>
             }
     }
 }
